@@ -46,7 +46,7 @@ test('complete messages, metadata and accessible player labels in every language
  assert.equal(boot('fr').values.paused,'Suspendu temporairement');
 });
 test('all existing links, media URLs, song titles and seven players are preserved',()=>{
- const urls=[...html.matchAll(/(?:href|src)="([^"]+)"/g)].map(m=>m[1]).filter(url=>url!=='./i18n.js');
+ const urls=[...html.matchAll(/(?:href|src)="([^"]+)"/g)].map(m=>m[1]).filter(url=>url!=='./i18n.js').map(url=>url.startsWith('./styles.css?')?'./styles.css':url);
  assert.deepEqual(urls,baseline.urls);
  assert.deepEqual([...html.matchAll(/<h3>(0[1-7] [^<]+)<\/h3>/g)].map(m=>m[1]),baseline.titles);
  assert.equal((html.match(/<iframe /g)||[]).length,7);
