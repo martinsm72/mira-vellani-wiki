@@ -3,8 +3,8 @@
 Responsive, buildfreie GitHub-Pages-Website für Mira Vellani, eine virtuelle KI-Künstlerin.
 
 ## Website
-Vorgesehene Adresse: https://martinsm72.github.io/mira-vellani-wiki/
-Diese Adresse ist erst nach Aktivierung und erfolgreichem GitHub-Pages-Deployment erreichbar.
+Live-Adresse: https://martinsm72.github.io/mira-vellani-wiki/
+Die Website wird über GitHub Pages aus main veröffentlicht.
 
 ## GitHub Pages aktivieren
 1. Repository → Settings → Pages öffnen.
@@ -54,7 +54,7 @@ Verifizierte Social-URLs erst nach Freigabe als echte Links ergänzen. Der vorha
 Der responsive Suno-iframe lädt ohne automatischen Wiedergabestart. Der externe Dienst verarbeitet Verbindungsdaten gemäß seinen eigenen Regeln. Ein sichtbarer Direktlink bleibt als Alternative verfügbar, falls Browser, Netzwerk oder Suno das Einbetten verhindern. Die Website nutzt keine eigenen Analysewerkzeuge, Cookies, externen Schriftarten oder JavaScript-Abhängigkeiten.
 
 ## Qualitätsprüfung
-Semantische Bereiche, deutsche Dokumentsprache, Sprunglink, Tastaturfokus, native Details-Elemente und Layouts für Mobilgeräte sind enthalten. Der Player benötigt eine Internetverbindung. Vor Veröffentlichung offizieller Bilder Bildrechte und Alternativtexte ergänzen.
+Semantische Bereiche, sprachabhängige Dokumentsprache (EN/DE/FR), Sprunglink, Tastaturfokus und Layouts für Mobilgeräte sind enthalten. Der Player benötigt eine Internetverbindung. Vor Veröffentlichung offizieller Bilder Bildrechte und Alternativtexte ergänzen.
 
 ## Rechte
 Keine pauschale Open-Source-Lizenz für Marke, Musik oder zukünftiges Bildmaterial erteilt.
@@ -79,3 +79,12 @@ Fünf bereitgestellte Original-PNGs wurden unverändert nach assets/ kopiert. Da
 - Öffentliche Kontakt-E-Mail: miravellani.music@gmail.com – direkt vom Nutzer bestätigt; als mailto-Link eingebunden.
 
 - Offizielles Suno-Profil: https://suno.com/@miravellani – direkt vom Nutzer bestätigt und im Social-Bereich verlinkt.
+
+## Sprachen (EN / DE / FR)
+Englisch ist Standard, unabhängig von der Browsersprache. Der Umschalter oben rechts bietet Englisch, Deutsch und Französisch. Die Auswahl wird unter `mira-vellani-language` im lokalen Browserspeicher gespeichert. Bei ungültiger Auswahl gilt Englisch; bei gesperrtem Speicher funktioniert das Umschalten weiterhin für den aktuellen Seitenaufruf.
+
+`index.html` enthält die englische Grundfassung und stabile `data-i18n`-Schlüssel. `i18n.js` verwaltet zentrale Übersetzungstabellen, die Dokumentsprache und Leserichtung sowie Texte und zugängliche Beschreibungen. Es ersetzt keine Player-Knoten und verändert keine Medien- oder Linkadressen. Alle Übersetzungen sind feste, redaktionell gepflegte Inhalte.
+
+Weitere Sprachen werden später als eigene BCP-47-Einträge mit `dir` und vollständigen `messages` ergänzt; anschließend kommt ein entsprechender `data-language`-Button hinzu. Tunesisch-Arabisch und Algerisch-Arabisch sind noch nicht implementiert. Für diese künftigen Varianten kann `dir: 'rtl'` gesetzt werden; Layout und Übersetzungen sind dann gesondert zu prüfen. Fehlende Schlüssel fallen auf Englisch zurück.
+
+Prüfung ohne zusätzliche Pakete: `node --test tests/i18n.test.cjs`. Der Test prüft Sprachwechsel, Speicherung, ungültige/gesperrte Speicherung, Übersetzungsschlüssel sowie die unveränderten Songtitel und Medien-/Linkadressen.
